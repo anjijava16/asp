@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       						http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+							http://www.springframework.org/schema/util 
+							http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<bean id="hrPortalDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		>
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/HRPortal</value> 
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+	</bean>
+
+<!-- Definition for studentJDBCTemplate bean -->
+		<bean id="loginDao" class="com.iwinner.belk.hrportal.dao.LoginDaoImpl">
+		<property name="dataSource">
+			<ref bean="hrPortalDataSource" />
+		</property>
+	</bean>
+
+
+</beans>
