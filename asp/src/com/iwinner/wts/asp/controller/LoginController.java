@@ -63,7 +63,7 @@ public class LoginController {
             			    	    UserASPVO userVO=new UserASPVO();
             			    		userVO=loginServiceIF.userDetails(username);
             			    		request.getSession().setAttribute("userVO",userVO);
-            			    		target="testTakerHome";            			 	
+            			    		target="adminHome";            			 	
             			    	}else{
             			    		target="testTakerHome";            			 
             			    	}
