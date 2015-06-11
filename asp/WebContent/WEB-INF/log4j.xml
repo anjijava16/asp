@@ -3,7 +3,7 @@
 <log4j:configuration debug="false">
 	<appender name="infoAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="Threshold" value="INFO" />
-		<param name="File" value="E:\\iwinner\\info.log" />
+		<param name="File" value="E:\\logs\\asp\\info.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<!-- <param name="MaxFileSize" value="10MB" />
 		<param name="MaxBackupIndex" value="10" />
@@ -15,7 +15,7 @@
 	</appender>
 	<appender name="debugAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="Threshold" value="DEBUG" />
-		<param name="File" value="E:\\iwinner\\debug.log" />
+		<param name="File" value="E:\\logs\\asp\\debug.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<!-- <param name="MaxFileSize" value="10MB" />
 		<param name="MaxBackupIndex" value="10" />
@@ -27,7 +27,7 @@
 	</appender>
 	<appender name="errorAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="Threshold" value="ERROR" />
-		<param name="File" value="E:\\iwinner\\error.log" />
+		<param name="File" value="E:\\logs\\asp\\error.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<!-- <param name="MaxFileSize" value="10MB" />
 		<param name="MaxBackupIndex" value="10" />
@@ -39,7 +39,7 @@
 
 	<appender name="warnAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="Threshold" value="WARN" />
-		<param name="File" value="E:\\iwinner\\warn.log" />
+		<param name="File" value="E:\\logs\\asp\\warn.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<!-- <param name="MaxFileSize" value="10MB" />
 		<param name="MaxBackupIndex" value="10" />
@@ -50,7 +50,7 @@
 	</appender>
 	<appender name="traceAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="Threshold" value="TRACE" />
-		<param name="File" value="E:\\iwinner\\trace.log" />
+		<param name="File" value="E:\\logs\\asp\\trace.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<!-- <param name="MaxFileSize" value="10MB" />
 		<param name="MaxBackupIndex" value="10" />
@@ -61,7 +61,7 @@
 	</appender>
 	<appender name="fatalAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="Threshold" value="FATAL" />
-		<param name="File" value="E:\\iwinner\\fatal.log" />
+		<param name="File" value="E:\\logs\\asp\\fatal.log" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
       <!-- <param name="MaxFileSize" value="20MB" />
 		<param name="MaxBackupIndex" value="10" />
@@ -71,7 +71,7 @@
                 %-5p  [%c{1}] %m %n" />
 		</layout>
 	</appender>
-	<logger name="com.iwinner.belk.hrportal" additivity="false">
+	<logger name="com.iwinner.wts.asp" additivity="false">
 		<level value="ALL" />
 		<!-- ALL > TRACE > DEBUG > INFO > WARN > ERROR > FATAL > OFF -->
 		<!-- <appender-ref ref="consoleAppender"/> -->

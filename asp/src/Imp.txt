@@ -1,0 +1,5 @@
+#### For blur fuction
+	$(document).ready(
+			function() {
+				$("#username").blur(
+						

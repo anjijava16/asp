@@ -18,7 +18,7 @@
 	<table cellspacing="5" cellpadding="5">
 		<tr>
 			<td><img src="images/group.png"/></td>
-			<td class="label"><a href="CreateGroup.action">Add a Group</a></td>
+			<td class="label"><a href="CreateGroupPage.action">Add a Group</a></td>
 			<td rowspan="3" width="40px">&nbsp;</td>
 			<td><img src="images/user.png"/></td>
 			<td class="label"><a href="AddCandidate.action">Add a Candidate</a></td>

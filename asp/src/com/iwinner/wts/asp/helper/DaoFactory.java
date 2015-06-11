@@ -1,5 +1,7 @@
 package com.iwinner.wts.asp.helper;
 
+import com.iwinner.wts.asp.dao.AdminOperationDaoIF;
+import com.iwinner.wts.asp.dao.AdminOperationDaoImpl;
 import com.iwinner.wts.asp.dao.LDAPLoginDaoIF;
 import com.iwinner.wts.asp.dao.LDAPLoginDaoImpl;
 import com.iwinner.wts.asp.dao.LoginDaoIF;
@@ -12,10 +14,13 @@ public class DaoFactory {
 	private static StartUpDaoIF startUpDaoIF = null;
 	private static LDAPLoginDaoIF ldapDaoIF = null;
 	private static LoginDaoIF loginDaoIF=null;
+    private static AdminOperationDaoIF adminOpsDaoIF=null;
 	static {
+		adminOpsDaoIF=new AdminOperationDaoImpl();
 		startUpDaoIF = new StartUpDaoImpl();
 		ldapDaoIF=new LDAPLoginDaoImpl();
 		loginDaoIF=new LoginDaoImpl();
+		
 	}
 
 	public static StartUpDaoIF startUpDaoFactory() {
@@ -26,5 +31,8 @@ public class DaoFactory {
 	}
 	public static LoginDaoIF loginDaoFactory(){
 		return loginDaoIF;
+	}
+	public static AdminOperationDaoIF adminDaoFactory(){
+		return adminOpsDaoIF;
 	}
 }

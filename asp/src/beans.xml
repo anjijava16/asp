@@ -13,7 +13,7 @@
 			<value>com.mysql.jdbc.Driver</value>
 		</property>
 		<property name="url">
-			<value>jdbc:mysql://localhost:3306/HRPortal</value> 
+			<value>jdbc:mysql://localhost:3306/asapdb</value> 
 		</property>
 		<property name="username">
 			<value>root</value>
@@ -24,7 +24,7 @@
 	</bean>
 
 <!-- Definition for studentJDBCTemplate bean -->
-		<bean id="loginDao" class="com.iwinner.belk.hrportal.dao.LoginDaoImpl">
+		<bean id="adminDao" class="com.iwinner.wts.asp.dao.AdminOperationDaoImpl">
 		<property name="dataSource">
 			<ref bean="hrPortalDataSource" />
 		</property>

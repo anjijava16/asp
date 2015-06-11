@@ -73,5 +73,10 @@
 		</property>
 	</bean>
 
+	<bean id="adminDaoImpl" class="com.iwinner.wts.asp.dao.AdminOperationDaoImpl">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
 
 </beans>
