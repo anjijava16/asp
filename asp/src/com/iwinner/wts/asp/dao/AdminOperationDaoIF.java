@@ -19,4 +19,10 @@ public interface AdminOperationDaoIF {
 	public boolean userExistOrNot(String username)throws DaoException ;
 	
 	public List<CandidateDTO>  candidateDetails()throws DaoException;
+	
+	public String grouName(Integer groupId)throws DaoException;
+	
+	public void update(String username,Integer groupId)throws DaoException;
+	
+	public Integer grouId(String groupName)throws DaoException;
 }

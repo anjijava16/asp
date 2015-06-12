@@ -34,9 +34,15 @@ public class AspPortalConstants {
 	public static Integer CUSTOMER_USER_ID=5003;
 	public static Integer PASSWORD_BLOCKED=5004;
 
+	//************Symboll Info
+	public static String  HYPHEN_MINUS="-";
 	
 	public static String USER_NOT_FOUND="User not found";
 	public static String USER_FOUND="";
+	
+	public static String PROBLEM_NOT_FOUND="";
+	public static String PROBLEM_FOUND="Problem alredy exists,please contact admin for solution";
+	
 	//SQL QUERIES
 	public static String INSERT_AUDIT_QUERY=CONFIG.getString("INSERT_QUERY");
 	public static String SELECT_USER_VERIFY=CONFIG.getString("SELECT_USER_VERIFY");
@@ -59,4 +65,12 @@ public class AspPortalConstants {
 	public static String SELECT_GROUPS_QUERY=CONFIG.getString("SELECT_GROUPS_QUERY");
 	public static String SELECT_USERS_QUERY=CONFIG.getString("SELECT_USERS_QUERY");
 	public static String SELECT_CHECK_USER=CONFIG.getString("SELECT_CHECK_USER");
+	public static String UPDATE_GROUP_ID=CONFIG.getString("UPDATE_GROUP_ID");
+	public static String SELECT_GROUPID_FROM_GROUPNAME=CONFIG.getString("SELECT_GROUPID_FROM_GROUPNAME");
+	public static String SELECT_CANDIDATE_QUERY=CONFIG.getString("SELECT_CANDIDATE_QUERY");
+	public static String SELECT_GROUPNAME_FROM_GROUPID=CONFIG.getString("SELECT_GROUPNAME_FROM_GROUPID");
+	public static String INSERT_PROBLEM_QUERY=CONFIG.getString("INSERT_PROBLEM_QUERY");
+	public static String SELECT_MAX_PROBLEM_ID=CONFIG.getString("SELECT_MAX_PROBLEM_ID");
+	public static String FIND_PROBLEM_EXISTS_OR_NOT=CONFIG.getString("FIND_PROBLEM_EXISTS_OR_NOT");
+	public static String SELECT_PROBLEM_QUERY=CONFIG.getString("SELECT_PROBLEM_QUERY");
 }

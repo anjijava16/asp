@@ -17,6 +17,7 @@ import com.iwinner.wts.asp.exceptions.DaoException;
 import com.iwinner.wts.asp.exceptions.ServiceException;
 import com.iwinner.wts.asp.form.CandidateVO;
 import com.iwinner.wts.asp.form.GroupVO;
+import com.iwinner.wts.asp.helper.AspPortalConstants;
 import com.iwinner.wts.asp.helper.DaoFactory;
 
 @Service
@@ -101,10 +102,15 @@ public class AdminOperationServiceImpl implements AdminOperationServiceIF {
 		adminOperationDaoIF = DaoFactory.adminDaoFactory();
 		try {
 			candidateDTO = adminOperationDaoIF.candidateDetails();
-			CandidateVO cVO = new CandidateVO();
+			
 			for (CandidateDTO cDTO : candidateDTO) {
 				try {
+					CandidateVO cVO = new CandidateVO();
+					Integer groupId=cDTO.getGroupDTO().getGroupId();
 					BeanUtils.copyProperties(cVO, cDTO);
+					GroupVO groupVo=new GroupVO();
+					groupVo.setGroupId(groupId);
+					cVO.setGroupVO(groupVo);
 					candidateVO.add(cVO);
 				} catch (IllegalAccessException e) {
 					LOGGER.error("Error into the candidateDetails() "+ e.getMessage());
@@ -120,4 +126,28 @@ public class AdminOperationServiceImpl implements AdminOperationServiceIF {
 		}
 		return candidateVO;
 	}
+	public String grouName(Integer groupId) throws ServiceException {
+		adminOperationDaoIF = DaoFactory.adminDaoFactory();
+		String groupName=null;
+		try {
+			groupName=adminOperationDaoIF.grouName(groupId);
+		} catch (DaoException e) {
+			LOGGER.error("Error into the grouName() " + e.getMessage());
+			throw new ServiceException(e);
+		}
+		return groupName;
+	}
+
+public void associateGroupUpdate(String username,String groupName)throws ServiceException{
+	adminOperationDaoIF = DaoFactory.adminDaoFactory();
+	String usernamesp[]=username.split(AspPortalConstants.HYPHEN_MINUS);
+	String canName=usernamesp[0];
+	String empId=usernamesp[1];
+	try {
+		adminOperationDaoIF.update(canName, adminOperationDaoIF.grouId(groupName));
+	} catch (DaoException e) {
+		LOGGER.error("Error into the grouName() " + e.getMessage());
+		throw new ServiceException(e);
+   }
+}
 }

@@ -64,9 +64,6 @@
 			<ref bean="dataSource" />
 		</property>
 	</bean>
-
-
-
 	<bean id="startUpDao" class="com.iwinner.wts.asp.dao.StartUpDaoImpl">
 		<property name="dataSource">
 			<ref bean="dataSource" />
@@ -74,6 +71,12 @@
 	</bean>
 
 	<bean id="adminDaoImpl" class="com.iwinner.wts.asp.dao.AdminOperationDaoImpl">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+
+	<bean id="assessmentDaoImpl" class="com.iwinner.wts.asp.dao.AssessmentDaoImpl">
 		<property name="dataSource">
 			<ref bean="dataSource" />
 		</property>

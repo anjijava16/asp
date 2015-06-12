@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.iwinner.wts.asp.exceptions.ServiceException;
 import com.iwinner.wts.asp.form.CandidateVO;
 import com.iwinner.wts.asp.form.GroupVO;
+import com.iwinner.wts.asp.form.ProblemsVO;
 import com.iwinner.wts.asp.helper.AspPortalConstants;
 import com.iwinner.wts.asp.service.AdminOperationServiceIF;
 
@@ -73,10 +74,20 @@ public void userVerficationChecking(HttpServletRequest request,HttpServletRespon
 			 }
 
 	} catch (ServiceException e) {
-		e.printStackTrace();
+		LOGGER.error("Error into the userVerficationChecking() "+e.getMessage());
 	}
 	 return ;
 
+}
+@RequestMapping("AssociateGroupWithCandidate.action")
+public String associateGroupUpdate(HttpServletRequest request){
+	try {
+		adminServiceImpl.associateGroupUpdate(request.getParameter("candNameAndId"), request.getParameter("groupName"));
+	} catch (ServiceException e) {
+		LOGGER.error("Error into the associateGroupUpdate() "+e.getMessage());
+		return "associateCandidateGroup";
+	}
+	return "adminHome";
 }
 
 }

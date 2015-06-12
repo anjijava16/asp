@@ -9,9 +9,11 @@
 </head>
 <body>
  <%
+ if(null!=(UserASPVO)session.getAttribute("userVO")){
  UserASPVO userVO=(UserASPVO)session.getAttribute("userVO");
- if(userVO.getUsername()!=null || !"".equals(userVO.getUsername())) {
+ if(userVO.getUsername()!=null || !"".equals(userVO.getUsername())) 
  %>
+ <%{ %>
  	<%@include file="aboutASAP.jsp"%><br/><br/>
 	<fieldset>
 	<legend class="heading">Welcome ${sessionScope.user}</legend>
@@ -24,13 +26,13 @@
 			<td class="label"><a href="AddCandidate.action">Add a Candidate</a></td>
 			<td rowspan="3" width="40px">&nbsp;</td>
 			<td><img src="images/assigngroup.png"/></td>
-			<td class="label"><a href="AssociateGroupWithCandidate.action">Assign Group to a Candidate</a></td>
+			<td class="label"><a href="assignGroup.action">Assign Group to a Candidate</a></td>
 		</tr>
 		<tr>
 			<td><img src="images/assessment.png"/></td>
-			<td class="label"><a href="AddProblem.action">Add an Assessment</a></td>
+			<td class="label"><a href="addProblemPage.action">Add an Assessment</a></td>
 			<td><img src="images/testcase.png"/></td>
-			<td class="label"><a href="AddTestCase.action">Add a Test Case to an Assessment</a></td>
+			<td class="label"><a href="testCase.action">Add a Test Case to an Assessment</a></td>
 			<td><img src="images/schedule.png"/></td>
 			<td class="label"><a href="ScheduleAssessment.action">Schedule an Assessment</a></td>
 		</tr>
@@ -47,8 +49,9 @@
 		</tr>
 	</table>
 	</fieldset>
+	<%} %>
 <%} else {%>
-	<jsp:forward page="index.jsp"/>
+	<jsp:forward page="login.jsp"/>
 <%} %>
 </body>
 </html>

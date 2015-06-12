@@ -21,7 +21,7 @@ import com.iwinner.wts.asp.helper.AspPortalConstants;
 
 public class AdminOperationDaoImpl implements AdminOperationDaoIF{
 	
-	private static Logger LOGGER = Logger.getLogger(LDAPLoginDaoImpl.class);
+	private static Logger LOGGER = Logger.getLogger(AdminOperationDaoImpl.class);
 
 	private static DataSource dataSource=null;
 
@@ -104,7 +104,7 @@ public List<CandidateDTO>  candidateDetails()throws DaoException{
 	List<CandidateDTO> listCandDTO=new ArrayList<CandidateDTO>();
 	try {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		listCandDTO=(List<CandidateDTO>)jdbcTemplate.query(AspPortalConstants.SELECT_GROUPS_QUERY,new CandidateRowMapper());
+		listCandDTO=(List<CandidateDTO>)jdbcTemplate.query(AspPortalConstants.SELECT_CANDIDATE_QUERY,new CandidateRowMapper());
 
 	} catch (Exception e) {
 		LOGGER.error("Error into the groupDetails() "+e.getMessage());
@@ -133,6 +133,16 @@ public Map<String,Integer> userInfo(String username)throws DaoException{
 	return userDetails;
 }
 
+public void update(String username,Integer groupId)throws DaoException{
+	try {
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		jdbcTemplate.update(AspPortalConstants.UPDATE_GROUP_ID, new Object[]{groupId,username});
+	} catch (Exception e) {
+		LOGGER.error("Error into the groupDetails() "+e.getMessage());
+		throw new DaoException(e);
+	}
+	
+}
 public boolean userExistOrNot(String username)throws DaoException{
 	boolean userExist=false;
 	try {
@@ -149,7 +159,29 @@ public boolean userExistOrNot(String username)throws DaoException{
 	}
 	return userExist;
 }
+public String grouName(Integer groupId)throws DaoException{
+	String groupName=null;
+try {
+	JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+	groupName=(String)jdbcTemplate.queryForObject(AspPortalConstants.SELECT_GROUPID_FROM_GROUPNAME, new Object[]{groupId},new GroupNameRowMapper());
+} catch (Exception e) {
+	LOGGER.error("Error into the groupDetails() "+e.getMessage());
+	throw new DaoException(e);
+}
+	return groupName;
+}
 
+public Integer grouId(String groupName)throws DaoException{
+	Integer groupId=null;
+try {
+	JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+	groupId=(Integer)jdbcTemplate.queryForObject(AspPortalConstants.SELECT_GROUPNAME_FROM_GROUPID, new Object[]{groupName},new GroupIdRowMapper());
+} catch (Exception e) {
+	LOGGER.error("Error into the groupDetails() "+e.getMessage());
+	throw new DaoException(e);
+}
+	return groupId;
+}
 /**
  ################## Inner class for GroupDetails information ############
  
@@ -163,6 +195,7 @@ class GroupDTOMapper implements RowMapper<GroupDTO>{
 		return groupDTO;
 	}
 }
+
 /**
 ################## Inner class for UserDetails information ############
 
@@ -198,4 +231,19 @@ class CandidateRowMapper implements RowMapper<CandidateDTO>{
 		return candDTO;
 	}
 }
+class GroupNameRowMapper implements RowMapper<String> {
+
+	public String mapRow(ResultSet rs, int arg1) throws SQLException {
+		String name=rs.getString("NAME");
+		return name;
+	}
+}class GroupIdRowMapper implements RowMapper<Integer> {
+
+	public Integer mapRow(ResultSet rs, int arg1) throws SQLException {
+		Integer id=rs.getInt("GROUP_ID");
+		return id;
+	}
+}
+
+
 }
